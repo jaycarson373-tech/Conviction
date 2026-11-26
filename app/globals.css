@@ -1,0 +1,200 @@
+@import "tailwindcss";
+
+/* ConvictionPad design tokens — dark charcoal, restrained emerald. */
+@theme {
+  --color-bg: #0c0d0f;
+  --color-surface: #131417;
+  --color-surface-2: #181a1d;
+  --color-surface-3: #1f2125;
+  --color-line: #25282c;
+  --color-line-strong: #33373c;
+  --color-ink: #ecedef;
+  --color-ink-2: #a3a8af;
+  --color-ink-3: #6f747b;
+  --color-accent: #1fb482;
+  --color-accent-ink: #4fd2a3;
+  --color-accent-deep: #0f3b2c;
+  --color-warn: #d9a440;
+  --color-bad: #e06a6b;
+
+  /* Conviction components — validated categorical palette (dark surface, adjacent pairs pass CVD ≥ 8). */
+  --color-c-holding: #1fb482;
+  --color-c-participation: #9887ef;
+  --color-c-contributions: #d28e05;
+  --color-c-governance: #338ced;
+  --color-c-consistency: #e24d8b;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono-face), ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --radius-card: 14px;
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  background: var(--color-bg);
+  overflow-x: clip;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--color-accent) 35%, transparent);
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum", "ss01";
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+}
+
+.hairline {
+  border-color: var(--color-line);
+}
+
+.label {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-3);
+  font-weight: 500;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 38px;
+  padding: 0 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 160ms var(--ease-out-soft), border-color 160ms, color 160ms, transform 160ms;
+  white-space: nowrap;
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btn:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.btn-primary {
+  background: var(--color-accent);
+  color: #04130d;
+}
+.btn-primary:hover {
+  background: var(--color-accent-ink);
+}
+.btn-ghost {
+  border: 1px solid var(--color-line-strong);
+  color: var(--color-ink);
+  background: transparent;
+}
+.btn-ghost:hover {
+  background: var(--color-surface-2);
+}
+
+.input {
+  width: 100%;
+  height: 40px;
+  padding: 0 12px;
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-line);
+  border-radius: 10px;
+  color: var(--color-ink);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 140ms;
+}
+textarea.input {
+  height: auto;
+  padding: 10px 12px;
+  line-height: 1.5;
+}
+.input:focus {
+  border-color: var(--color-accent);
+}
+.input::placeholder {
+  color: var(--color-ink-3);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 22px;
+  padding: 0 8px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 500;
+  border: 1px solid var(--color-line-strong);
+  color: var(--color-ink-2);
+}
+.pill-live {
+  border-color: color-mix(in oklab, var(--color-accent) 45%, transparent);
+  color: var(--color-accent-ink);
+  background: color-mix(in oklab, var(--color-accent) 10%, transparent);
+}
+.pill-warn {
+  border-color: color-mix(in oklab, var(--color-warn) 45%, transparent);
+  color: var(--color-warn);
+}
+
+.fade-up {
+  animation: fade-up 600ms var(--ease-out-soft) both;
+}
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, var(--color-surface-2), var(--color-surface-3), var(--color-surface-2));
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+  border-radius: 8px;
+}
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

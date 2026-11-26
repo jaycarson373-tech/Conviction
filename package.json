@@ -1,0 +1,43 @@
+{
+  "name": "convictionpad",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "dev": "next dev --port 3200",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test tests/*.test.ts",
+    "db:migrate": "node scripts/migrate.ts",
+    "dbc:config": "node scripts/create-dbc-config.ts"
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "0.6.0",
+    "@meteora-ag/dynamic-bonding-curve-sdk": "2.0.1",
+    "@solana/kit": "8.6.0",
+    "@solana/spl-token": "0.4.15",
+    "@solana/web3.js": "1.99.0",
+    "@wallet-standard/app": "1.1.1",
+    "bn.js": "5.2.5",
+    "bs58": "6.0.0",
+    "buffer": "^6.0.3",
+    "motion": "14.14.0",
+    "next": "16.4.6",
+    "postgres": "4.1.1",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.3.5",
+    "@types/bn.js": "5.2.0",
+    "@types/node": "22.19.19",
+    "@types/react": "19.3.3",
+    "@types/react-dom": "19.3.0",
+    "tailwindcss": "4.3.5",
+    "typescript": "5.9.3"
+  }
+}
